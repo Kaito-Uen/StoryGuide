@@ -1,65 +1,69 @@
-ï»¿const toggle = document.querySelector(".nav-toggle");
-const nav = document.querySelector(".site-nav");
+const toggle = document.querySelector('.nav-toggle');
+const nav = document.querySelector('.site-nav');
 const page = document.body.dataset.page;
 
 if (toggle && nav) {
-  toggle.addEventListener("click", () => {
-    const isOpen = nav.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(isOpen));
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
   });
 }
 
 const pageMap = {
-  home: "index.html",
-  intro: "intro.html",
-  season1: "season1.html",
-  season2: "season2.html",
-  season3: "season3.html",
-  season4: "season4.html",
-  season5: "season5.html",
-  season6: "season6.html",
-  characters: "characters.html",
-  relationship: "relationship.html",
-  articles: "articles.html",
-  movie: "movie.html"
+  home: '/',
+  movies: '/movies/',
+  dramas: '/dramas/',
+  animes: '/animes/',
+  'pb-home': '/dramas/peaky-blinders/',
+  intro: '/dramas/peaky-blinders/intro.html',
+  season1: '/dramas/peaky-blinders/season1.html',
+  season2: '/dramas/peaky-blinders/season2.html',
+  season3: '/dramas/peaky-blinders/season3.html',
+  season4: '/dramas/peaky-blinders/season4.html',
+  season5: '/dramas/peaky-blinders/season5.html',
+  season6: '/dramas/peaky-blinders/season6.html',
+  characters: '/dramas/peaky-blinders/characters.html',
+  relationship: '/dramas/peaky-blinders/relationship.html',
+  articles: '/dramas/peaky-blinders/articles.html',
+  movie: '/dramas/peaky-blinders/movie.html'
 };
 
 if (nav && pageMap[page]) {
-  const current = Array.from(nav.querySelectorAll("a")).find((link) => link.getAttribute("href") === pageMap[page]);
+  const current = Array.from(nav.querySelectorAll('a')).find((link) => link.getAttribute('href') === pageMap[page]);
   if (current) {
-    current.classList.add("is-current");
-    current.setAttribute("aria-current", "page");
+    current.classList.add('is-current');
+    current.setAttribute('aria-current', 'page');
   }
 }
 
-const spoilerButtons = document.querySelectorAll("[data-spoiler-toggle]");
+const spoilerButtons = document.querySelectorAll('[data-spoiler-toggle]');
 
 spoilerButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const targetId = button.getAttribute("aria-controls");
+  button.addEventListener('click', () => {
+    const targetId = button.getAttribute('aria-controls');
     const panel = targetId ? document.getElementById(targetId) : null;
     if (!panel) {
       return;
     }
 
-    const isOpen = button.getAttribute("aria-expanded") === "true";
-    button.setAttribute("aria-expanded", String(!isOpen));
+    const isOpen = button.getAttribute('aria-expanded') === 'true';
+    button.setAttribute('aria-expanded', String(!isOpen));
     panel.hidden = isOpen;
-    button.textContent = isOpen ? "ãƒã‚¿ãƒãƒ¬ã‚ã‚Šã‚ã‚‰ã™ã˜ã‚’è¡¨ç¤º" : "ãƒã‚¿ãƒãƒ¬ã‚ã‚Šã‚ã‚‰ã™ã˜ã‚’é–‰ã˜ã‚‹";
+    button.textContent = isOpen ? 'ƒlƒ^ƒoƒŒ‚ ‚è‚ ‚ç‚·‚¶‚ğ•\¦' : 'ƒlƒ^ƒoƒŒ‚ ‚è‚ ‚ç‚·‚¶‚ğ•Â‚¶‚é';
   });
 });
 
-const consentKey = "movieinfo_cookie_consent";
+const consentKey = 'movieinfo_cookie_consent';
 
 function applyConsentState(state) {
   document.documentElement.dataset.consent = state;
-  window.dispatchEvent(new CustomEvent("site-consent-updated", { detail: { state } }));
+  window.dispatchEvent(new CustomEvent('site-consent-updated', { detail: { state } }));
 }
 
 function saveConsent(state) {
   localStorage.setItem(consentKey, state);
   applyConsentState(state);
-  const banner = document.querySelector(".consent-banner");
+  const banner = document.querySelector('.consent-banner');
   if (banner) {
     banner.remove();
   }
@@ -71,35 +75,35 @@ function buildConsentBanner() {
     return;
   }
 
-  const banner = document.createElement("aside");
-  banner.className = "consent-banner";
-  banner.setAttribute("role", "dialog");
-  banner.setAttribute("aria-live", "polite");
-  banner.setAttribute("aria-label", "Cookieåˆ©ç”¨ã«ã¤ã„ã¦ã®ãŠçŸ¥ã‚‰ã›");
+  const banner = document.createElement('aside');
+  banner.className = 'consent-banner';
+  banner.setAttribute('role', 'dialog');
+  banner.setAttribute('aria-live', 'polite');
+  banner.setAttribute('aria-label', 'Cookie—˜—p‚É‚Â‚¢‚Ä‚Ì‚¨’m‚ç‚¹');
 
   banner.innerHTML = `
     <div class="consent-banner__inner">
-      <p class="tag">Cookieé€šçŸ¥</p>
-      <h2>Cookieã¨åºƒå‘Šåˆ©ç”¨ã«ã¤ã„ã¦</h2>
-      <p>å½“ã‚µã‚¤ãƒˆã§ã¯ã€åˆ©ä¾¿æ€§å‘ä¸Šã‚„åºƒå‘Šé…ä¿¡æº–å‚™ã®ãŸã‚ã« Cookie ç­‰ã‚’åˆ©ç”¨ã™ã‚‹å ´åˆãŒã‚ã‚Šã¾ã™ã€‚è©³ç´°ã¯ <a href="privacy.html">ãƒ—ãƒ©ã‚¤ãƒã‚·ãƒ¼ãƒãƒªã‚·ãƒ¼</a> ã¨ <a href="ads.html">åºƒå‘Šæ²è¼‰æ–¹é‡</a> ã‚’ã”ç¢ºèªãã ã•ã„ã€‚</p>
-      <p class="article-meta">ã“ã®é€šçŸ¥ã¯ç°¡æ˜“å®Ÿè£…ã§ã™ã€‚åºƒå‘Šé…ä¿¡åœ°åŸŸã«ã‚ˆã£ã¦ã¯ã€å…¬é–‹æ™‚ã«æ­£å¼ãªåŒæ„ç®¡ç†ãƒ„ãƒ¼ãƒ«ãŒåˆ¥é€”å¿…è¦ã§ã™ã€‚</p>
+      <p class="tag">Cookie’Ê’m</p>
+      <h2>Cookie‚ÆL—˜—p‚É‚Â‚¢‚Ä</h2>
+      <p>“–ƒTƒCƒg‚Å‚ÍA—˜•Ö«Œüã‚âL”zM€”õ‚Ì‚½‚ß‚É Cookie “™‚ğ—˜—p‚·‚éê‡‚ª‚ ‚è‚Ü‚·BÚ×‚Í <a href="/privacy.html">ƒvƒ‰ƒCƒoƒV[ƒ|ƒŠƒV[</a> ‚Æ <a href="/ads.html">LŒfÚ•ûj</a> ‚ğ‚²Šm”F‚­‚¾‚³‚¢B</p>
+      <p class="article-meta">‚±‚Ì’Ê’m‚ÍŠÈˆÕÀ‘•‚Å‚·BL”zM’nˆæ‚É‚æ‚Á‚Ä‚ÍAŒöŠJ‚É³®‚È“¯ˆÓŠÇ—ƒc[ƒ‹‚ª•Ê“r•K—v‚Å‚·B</p>
       <div class="consent-banner__actions">
-        <button type="button" class="button" data-consent-action="accept">åŒæ„ã™ã‚‹</button>
-        <button type="button" class="button button-ghost" data-consent-action="reject">åŒæ„ã—ãªã„</button>
+        <button type="button" class="button" data-consent-action="accept">“¯ˆÓ‚·‚é</button>
+        <button type="button" class="button button-ghost" data-consent-action="reject">“¯ˆÓ‚µ‚È‚¢</button>
       </div>
     </div>
   `;
 
-  banner.querySelector('[data-consent-action="accept"]').addEventListener("click", () => {
-    saveConsent("granted");
+  banner.querySelector('[data-consent-action="accept"]').addEventListener('click', () => {
+    saveConsent('granted');
   });
 
-  banner.querySelector('[data-consent-action="reject"]').addEventListener("click", () => {
-    saveConsent("denied");
+  banner.querySelector('[data-consent-action="reject"]').addEventListener('click', () => {
+    saveConsent('denied');
   });
 
   document.body.appendChild(banner);
 }
 
-applyConsentState(localStorage.getItem(consentKey) || "unset");
+applyConsentState(localStorage.getItem(consentKey) || 'unset');
 buildConsentBanner();

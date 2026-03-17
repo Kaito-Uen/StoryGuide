@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(124, 140, 255, 0.12), transparent 24%),
+    linear-gradient(180deg, #0b0d10 0%, #0f1217 100%);
+}
+
+::selection {
+  background: rgba(124, 140, 255, 0.28);
+  color: #f5f7fa;
+}
+
+@layer base {
+  * {
+    @apply border-line;
+  }
+
+  body {
+    @apply text-[15px] leading-7 text-text;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-[-0.03em] text-text;
+  }
+
+  p {
+    @apply text-muted;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-7xl px-6 sm:px-8 lg:px-10;
+  }
+
+  .section-space {
+    @apply py-16 sm:py-20;
+  }
+
+  .panel {
+    @apply rounded-3xl border border-line bg-panel/90;
+  }
+
+  .reading-width {
+    @apply max-w-reading;
+  }
+
+  .fade-border {
+    position: relative;
+  }
+
+  .fade-border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}

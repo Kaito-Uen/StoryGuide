@@ -1,24 +1,26 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://story-explained.com/</loc></url>
-  <url><loc>https://story-explained.com/index.html</loc></url>
-  <url><loc>https://story-explained.com/intro.html</loc></url>
-  <url><loc>https://story-explained.com/season1.html</loc></url>
-  <url><loc>https://story-explained.com/season2.html</loc></url>
-  <url><loc>https://story-explained.com/season3.html</loc></url>
-  <url><loc>https://story-explained.com/season4.html</loc></url>
-  <url><loc>https://story-explained.com/season5.html</loc></url>
-  <url><loc>https://story-explained.com/season6.html</loc></url>
-  <url><loc>https://story-explained.com/characters.html</loc></url>
-  <url><loc>https://story-explained.com/relationship.html</loc></url>
-  <url><loc>https://story-explained.com/articles.html</loc></url>
-  <url><loc>https://story-explained.com/article-power-map.html</loc></url>
-  <url><loc>https://story-explained.com/article-shelby-growth.html</loc></url>
-  <url><loc>https://story-explained.com/article-thomas-change.html</loc></url>
-  <url><loc>https://story-explained.com/article-political-context.html</loc></url>
-  <url><loc>https://story-explained.com/movie.html</loc></url>
+  <url><loc>https://story-explained.com/movies/</loc></url>
+  <url><loc>https://story-explained.com/dramas/</loc></url>
+  <url><loc>https://story-explained.com/animes/</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/intro.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/season1.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/season2.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/season3.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/season4.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/season5.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/season6.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/characters.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/relationship.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/articles.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/article-power-map.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/article-shelby-growth.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/article-thomas-change.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/article-political-context.html</loc></url>
+  <url><loc>https://story-explained.com/dramas/peaky-blinders/movie.html</loc></url>
   <url><loc>https://story-explained.com/privacy.html</loc></url>
   <url><loc>https://story-explained.com/ads.html</loc></url>
   <url><loc>https://story-explained.com/contact.html</loc></url>
-  <url><loc>https://story-explained.com/404.html</loc></url>
 </urlset>
