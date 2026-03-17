@@ -48,3 +48,58 @@ spoilerButtons.forEach((button) => {
     button.textContent = isOpen ? "ネタバレありあらすじを表示" : "ネタバレありあらすじを閉じる";
   });
 });
+
+const consentKey = "movieinfo_cookie_consent";
+
+function applyConsentState(state) {
+  document.documentElement.dataset.consent = state;
+  window.dispatchEvent(new CustomEvent("site-consent-updated", { detail: { state } }));
+}
+
+function saveConsent(state) {
+  localStorage.setItem(consentKey, state);
+  applyConsentState(state);
+  const banner = document.querySelector(".consent-banner");
+  if (banner) {
+    banner.remove();
+  }
+}
+
+function buildConsentBanner() {
+  if (localStorage.getItem(consentKey)) {
+    applyConsentState(localStorage.getItem(consentKey));
+    return;
+  }
+
+  const banner = document.createElement("aside");
+  banner.className = "consent-banner";
+  banner.setAttribute("role", "dialog");
+  banner.setAttribute("aria-live", "polite");
+  banner.setAttribute("aria-label", "Cookie利用についてのお知らせ");
+
+  banner.innerHTML = `
+    <div class="consent-banner__inner">
+      <p class="tag">Cookie通知</p>
+      <h2>Cookieと広告利用について</h2>
+      <p>当サイトでは、利便性向上や広告配信準備のために Cookie 等を利用する場合があります。詳細は <a href="privacy.html">プライバシーポリシー</a> と <a href="ads.html">広告掲載方針</a> をご確認ください。</p>
+      <p class="article-meta">この通知は簡易実装です。広告配信地域によっては、公開時に正式な同意管理ツールが別途必要です。</p>
+      <div class="consent-banner__actions">
+        <button type="button" class="button" data-consent-action="accept">同意する</button>
+        <button type="button" class="button button-ghost" data-consent-action="reject">同意しない</button>
+      </div>
+    </div>
+  `;
+
+  banner.querySelector('[data-consent-action="accept"]').addEventListener("click", () => {
+    saveConsent("granted");
+  });
+
+  banner.querySelector('[data-consent-action="reject"]').addEventListener("click", () => {
+    saveConsent("denied");
+  });
+
+  document.body.appendChild(banner);
+}
+
+applyConsentState(localStorage.getItem(consentKey) || "unset");
+buildConsentBanner();

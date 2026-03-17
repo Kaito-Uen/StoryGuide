@@ -745,3 +745,53 @@ p {
   text-decoration: underline;
   text-underline-offset: 3px;
 }
+.consent-banner {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 40;
+}
+
+.consent-banner__inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid rgba(181, 146, 99, 0.24);
+  border-radius: 20px;
+  background: rgba(21, 21, 21, 0.96);
+  box-shadow: 0 20px 46px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(10px);
+}
+
+.consent-banner__inner h2 {
+  font-size: 1.2rem;
+}
+
+.consent-banner__inner p:last-of-type {
+  margin-bottom: 0;
+}
+
+.consent-banner__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.consent-banner a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 760px) {
+  .consent-banner {
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+  }
+
+  .consent-banner__inner {
+    padding: 24px;
+  }
+}
